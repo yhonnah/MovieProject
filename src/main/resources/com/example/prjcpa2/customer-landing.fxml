@@ -15,68 +15,74 @@
             <Font name="Bauhaus 93" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="img1" fitHeight="145.0" fitWidth="99.0" layoutX="41.0" layoutY="80.0" onMouseClicked="#mov1" pickOnBounds="true">
-         <image>
-            <Image url="@../../../../../../../../Desktop/8z2m2qjb94wc1.png" />
-         </image></ImageView>
-      <ImageView fx:id="img3" fitHeight="145.0" fitWidth="99.0" layoutX="317.0" layoutY="80.0" onMouseClicked="#mov3" pickOnBounds="true">
+      <ImageView fx:id="img3" fitHeight="174.0" fitWidth="120.0" layoutX="317.0" layoutY="126.0" onMouseClicked="#mov3" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../placeholder.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="img2" fitHeight="145.0" fitWidth="99.0" layoutX="178.0" layoutY="80.0" onMouseClicked="#mov2" pickOnBounds="true">
+      <ImageView fx:id="img2" fitHeight="174.0" fitWidth="120.0" layoutX="174.0" layoutY="126.0" onMouseClicked="#mov2" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../placeholder.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="img4" fitHeight="145.0" fitWidth="99.0" layoutX="453.0" layoutY="80.0" onMouseClicked="#mov4" pickOnBounds="true">
+      <ImageView fx:id="img4" fitHeight="174.0" fitWidth="120.0" layoutX="457.0" layoutY="126.0" onMouseClicked="#mov4" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../placeholder.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="title1" alignment="CENTER" editable="false" layoutX="51.0" layoutY="53.0" prefHeight="27.0" prefWidth="79.0" text="Moana 2">
+      <ImageView fx:id="img1" fitHeight="174.0" fitWidth="120.0" layoutX="31.0" layoutY="128.0" onMouseClicked="#mov2" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../placeholder.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="title1" alignment="CENTER" editable="false" layoutX="52.0" layoutY="98.0" prefHeight="27.0" prefWidth="79.0" text="Moana 2">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
          </font></TextField>
-      <TextField fx:id="title2" alignment="CENTER" editable="false" layoutX="196.0" layoutY="53.0" prefHeight="27.0" prefWidth="63.0" text="Wicked">
+      <TextField fx:id="title2" alignment="CENTER" editable="false" layoutX="203.0" layoutY="98.0" prefHeight="27.0" prefWidth="63.0" text="Wicked">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
          </font></TextField>
-      <TextArea fx:id="desc1" editable="false" layoutX="16.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Moana 2&quot; opens three years after the end of the first movie with the titular heroine (Auli'i Cravalho) endeavoring to break the curse of Nalo that has essentially isolated islands of people. Moana is searching the seas for the mythical island of Motufetu, which can reportedly unite these different cultures." wrapText="true" />
-      <TextArea fx:id="desc2" editable="false" layoutX="153.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Set in the Land of Oz, mostly before Dorothy Gale's arrival from Kansas, it follows Elphaba as she embarks on her path to becoming the Wicked Witch of the West, and chronicles her friendship with her classmate Galinda, who becomes Glinda the Good." wrapText="true" />
-      <TextField fx:id="title3" alignment="CENTER" layoutX="309.0" layoutY="53.0" prefHeight="27.0" prefWidth="120.0" text="The Colors Within">
+      <TextArea fx:id="desc1" editable="false" layoutX="16.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Moana 2&quot; opens three years after the end of the first movie with the titular heroine (Auli'i Cravalho) endeavoring to break the curse of Nalo that has essentially isolated islands of people. Moana is searching the seas for the mythical island of Motufetu, which can reportedly unite these different cultures." visible="false" wrapText="true" />
+      <TextArea fx:id="desc2" editable="false" layoutX="153.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Set in the Land of Oz, mostly before Dorothy Gale's arrival from Kansas, it follows Elphaba as she embarks on her path to becoming the Wicked Witch of the West, and chronicles her friendship with her classmate Galinda, who becomes Glinda the Good." visible="false" wrapText="true" />
+      <TextField fx:id="title3" alignment="CENTER" layoutX="317.0" layoutY="98.0" prefHeight="27.0" prefWidth="120.0" text="The Colors Within">
          <font>
             <Font name="Bauhaus 93" size="13.0" />
          </font></TextField>
-      <TextField fx:id="title4" alignment="CENTER" editable="false" layoutX="428.0" layoutY="53.0" prefHeight="27.0" prefWidth="149.0" text="Venom: The Last Dance">
+      <TextField fx:id="title4" alignment="CENTER" editable="false" layoutX="443.0" layoutY="98.0" prefHeight="27.0" prefWidth="149.0" text="Venom: The Last Dance">
          <font>
             <Font name="Bauhaus 93" size="13.0" />
          </font></TextField>
-      <TextArea fx:id="desc3" editable="false" layoutX="294.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all." wrapText="true">
+      <TextArea fx:id="desc3" editable="false" layoutX="294.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all." visible="false" wrapText="true">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></TextArea>
-      <TextArea fx:id="desc4" editable="false" layoutX="428.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Eddie Brock (Tom Hardy) and Venom (Tom Hardy) are fugitives from the American government. While in Mexico, back in his universe, Eddie gets the idea of resetting life in NYC. But on their way back to 'Merica, the two are attacked by a monstrous spider-lizard creature that Venom recognizes." wrapText="true" />
-      <TextField fx:id="rating1" alignment="CENTER" editable="false" layoutX="66.0" layoutY="213.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+      <TextArea fx:id="desc4" editable="false" layoutX="428.0" layoutY="238.0" prefHeight="145.0" prefWidth="149.0" text="Eddie Brock (Tom Hardy) and Venom (Tom Hardy) are fugitives from the American government. While in Mexico, back in his universe, Eddie gets the idea of resetting life in NYC. But on their way back to 'Merica, the two are attacked by a monstrous spider-lizard creature that Venom recognizes." visible="false" wrapText="true" />
+      <TextField fx:id="rating1" alignment="CENTER" editable="false" layoutX="66.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="rating2" alignment="CENTER" editable="false" layoutX="203.0" layoutY="213.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+      <TextField fx:id="rating2" alignment="CENTER" editable="false" layoutX="209.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="rating3" alignment="CENTER" layoutX="343.0" layoutY="215.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+      <TextField fx:id="rating3" alignment="CENTER" layoutX="352.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="rating4" alignment="CENTER" editable="false" layoutX="478.0" layoutY="215.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+      <TextField fx:id="rating4" alignment="CENTER" editable="false" layoutX="492.0" layoutY="310.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
       <TextField fx:id="date" alignment="CENTER" layoutX="244.0" layoutY="2.0" prefHeight="25.0" prefWidth="113.0" text="Mon, Dec. 2, 2024" />
+      <Label layoutX="206.0" layoutY="36.0" prefHeight="46.0" prefWidth="192.0" text="NOW SHOWING!" textFill="#eeb51e">
+         <font>
+            <Font name="Bauhaus 93" size="26.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
