@@ -14,7 +14,7 @@ public class WelcomePage extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(WelcomePage.class.getResource("welcome-view.fxml"));
         Pane root = fxmlLoader.load();
 
-        root.setStyle("-fx-background-color: #808080;");
+        root.setStyle("-fx-background-color: #0E0F14;");
 
 
 

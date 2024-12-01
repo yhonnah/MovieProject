@@ -29,7 +29,7 @@ public class WelcomeController {
 
     @FXML
     public void initialize() {
-        enter.setStyle("-fx-font-family: 'Tahoma'; -fx-font-size: 14px;");
+        enter.setStyle("-fx-font-family: 'Tahoma'; -fx-font-size: 14px; -fx-background-color: #EEB51E; -fx-text-fill:#0E0F14;");
     }
 
     public void enterlogin(Stage stage) throws IOException {
