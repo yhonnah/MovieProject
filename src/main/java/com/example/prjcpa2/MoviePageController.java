@@ -76,20 +76,20 @@ public class MoviePageController {
     @FXML
     private TextField title4;
 
-    public static String movie1Title;
-    public static String movie2Title;
-    public static String movie3Title;
-    public static String movie4Title;
+    public static String movie1Title = "Moana 2";
+    public static String movie2Title = "Wicked";
+    public static String movie3Title = "The Colors Within";
+    public static String movie4Title = "Venom: The Last Dance";
 
     public static Image movie1Image;
     public static Image movie2Image;
     public static Image movie3Image;
     public static Image movie4Image;
 
-    public static String movie1Rate;
-    public static String movie2Rate;
-    public static String movie3Rate;
-    public static String movie4Rate;
+    public static String movie1Rate = "G";
+    public static String movie2Rate = "PG";
+    public static String movie3Rate = "PG";
+    public static String movie4Rate = "R13";
 
     public static String moviedate;
 
@@ -115,27 +115,7 @@ public class MoviePageController {
             AdminWController.userType = "Guest";
         }
 
-        if ("Admin".equals(AdminWController.userType)) {
-            title1.setEditable(true);
-            title2.setEditable(true);
-            title3.setEditable(true);
-            title4.setEditable(true);
-
-            desc1.setEditable(true);
-            desc2.setEditable(true);
-            desc3.setEditable(true);
-            desc4.setEditable(true);
-
-            rating1.setEditable(true);
-            rating2.setEditable(true);
-            rating3.setEditable(true);
-            rating4.setEditable(true);
-
-            replace.setVisible(true);
-            replace1.setVisible(true);
-            date.setEditable(true);
-
-        } else if ("Guest".equals(AdminWController.userType)) {
+        if ("Guest".equals(AdminWController.userType)) {
             title1.setEditable(false);
             title2.setEditable(false);
             title3.setEditable(false);
@@ -158,20 +138,14 @@ public class MoviePageController {
 
     // Set initial images based on the TextFields at stage launch
     private void setInitialImages() {
-        String fileName1 = removeSpaces(title1.getText());
-        String fileName2 = removeSpaces(title2.getText());
-        String fileName3 = removeSpaces(title3.getText());
-        String fileName4 = removeSpaces(title4.getText());
-
-        // Ensure that img1, img2, img3, and img4 are not null before calling setImageForImageView
         if (img1 != null) {
-            setImageForImageView(img1, fileName1 + ".png");
+            setImageForImageView(img1, "Moana.png");
         }
         if (img2 != null) {
-            setImageForImageView(img2, fileName2 + ".png");
+            setImageForImageView(img2, "Wicked.png");
         }
         if (img3 != null) {
-            setImageForImageView(img3, fileName3 + ".png");
+            setImageForImageView(img3, "Colors .png");
         }
         if (img4 != null) {
             setImageForImageView(img4, fileName4 + ".png");
@@ -185,12 +159,12 @@ public class MoviePageController {
 
     // Method to set an image for an ImageView
     private void setImageForImageView(ImageView imageView, String fileName) {
-        String basePath = "file:C:/Users/Hanns/IdeaProjects/PRJ-CPA2/src/Movie Pictures/";  // Base directory for images
+        String basePath = "/src/Movie Pictures/";
         String imagePath = basePath + fileName;
 
         try {
-            Image image = new Image(imagePath);  // Load the image from the file system
-            imageView.setImage(image);  // Set the image to the ImageView
+            Image image = new Image(imagePath);
+            imageView.setImage(image);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: Image file not found or invalid: " + imagePath);
             e.printStackTrace();
