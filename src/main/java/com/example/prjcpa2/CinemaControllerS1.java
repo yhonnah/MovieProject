@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -22,8 +23,6 @@ import java.util.*;
 public class CinemaControllerS1 {
 
     // Data structures
-    private Stack<String> undoStack = new Stack<>();
-    private Stack<String> redoStack = new Stack<>();
     private HashMap<String, String> reservations = new HashMap<>();
     private TreeSet<String> availableSeats = new TreeSet<>();
     private Map<String, CheckBox> seatCheckBoxes = new HashMap<>();
@@ -60,11 +59,16 @@ public class CinemaControllerS1 {
     @FXML
     private TextField search;
 
+    @FXML
+    private Pane root;
+
     // Initialize seats and checkboxes
     @FXML
     public void initialize() {
         initializeSeats();
         initializeCheckBoxes();
+
+        root.setStyle("-fx-background-color: #0E0F14");
 
         if ("Admin".equals(AdminWController.userType)) {
             search.setVisible(true);
@@ -125,7 +129,6 @@ public class CinemaControllerS1 {
     // Handle seat selection directly
     private void handleSeatSelection(String seatID, CheckBox checkBox) {
         if (!checkBox.isSelected() && reservations.containsKey(seatID)) {
-            undoStack.push("RESERVE:" + seatID);
             cancelReservation(seatID);
         }
     }
@@ -135,8 +138,6 @@ public class CinemaControllerS1 {
         if (availableSeats.contains(seatID)) {
             availableSeats.remove(seatID);
             reservations.put(seatID, customerName);
-            undoStack.push("RESERVE:" + seatID);
-            redoStack.clear();
             System.out.println("Seat " + seatID + " reserved for " + customerName);
             reservationHistory.add("Reserved: " + seatID + " for " + customerName);
         } else {
@@ -144,7 +145,6 @@ public class CinemaControllerS1 {
         }
     }
 
-    // Cancel a reservation
     private void cancelReservation(String seatID) {
         if (reservations.containsKey(seatID)) {
             availableSeats.add(seatID);
@@ -154,72 +154,7 @@ public class CinemaControllerS1 {
         }
     }
 
-    // Undo the last action
-    @FXML
-    void undoClick(ActionEvent event) {
-        if (!undoStack.isEmpty()) {
-            String action = undoStack.pop();
-            redoStack.push(action);
-            String[] parts = action.split(":");
-            String seatID = parts[1];
 
-            if (parts[0].equals("RESERVE")) {
-                cancelReservation(seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(false);  // Allow unticking
-                    isProgrammaticChange = false;
-                }
-            } else if (parts[0].equals("CANCEL")) {
-                reserveSeat("UndoCustomer", seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(true);  // Allow ticking
-                    isProgrammaticChange = false;
-                }
-            }
-            System.out.println("Undo action performed.");
-        } else {
-            System.out.println("No actions to undo.");
-        }
-    }
-
-    @FXML
-    void redoClick(ActionEvent event) {
-        if (!redoStack.isEmpty()) {
-            String action = redoStack.pop();
-            undoStack.push(action);
-            String[] parts = action.split(":");
-            String seatID = parts[1];
-
-            if (parts[0].equals("RESERVE")) {
-                reserveSeat("RedoCustomer", seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(true);  // Allow ticking
-                    isProgrammaticChange = false;
-                }
-            } else if (parts[0].equals("CANCEL")) {
-                cancelReservation(seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(false);  // Allow unticking
-                    isProgrammaticChange = false;
-                }
-            }
-            System.out.println("Redo action performed.");
-        } else {
-            System.out.println("No actions to redo.");
-        }
-    }
 
     // Reserve seats for the entered guest name
     @FXML
@@ -248,7 +183,7 @@ public class CinemaControllerS1 {
         // Clear input fields and save data
         guestName.clear();
         guestEmail.clear();
-        saveSeatData(); // Save the data to a .properties file
+        saveSeatData();
         System.out.println("Reservations updated and saved.");
 
         // Show the popup if reservation succeeds
@@ -273,9 +208,7 @@ public class CinemaControllerS1 {
         }
     }
 
-    /**
-     * Save seat data to a .properties file.
-     */
+
     private void saveSeatData() {
         Properties seatProperties = new Properties();
         String filename = title.getText() + "1220.properties";
@@ -284,16 +217,13 @@ public class CinemaControllerS1 {
         reservations.forEach(seatProperties::setProperty);
 
         try (FileOutputStream output = new FileOutputStream(filename)) {
-            // Save properties to the file
             seatProperties.store(output, "Seat Reservations for " + title);
             System.out.println("Seat data saved to " + filename);
         } catch (IOException e) {
             System.err.println("Error saving seat data: " + e.getMessage());
         }
     }
-    /**
-     * Load seat data from a .properties file based on the movie title.
-     */
+
     public void loadSeatData() {
         Properties seatProperties = new Properties();
         String filename = title.getText() + "1220.properties";

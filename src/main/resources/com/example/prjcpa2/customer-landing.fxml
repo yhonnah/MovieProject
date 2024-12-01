@@ -52,7 +52,10 @@
          <font>
             <Font name="Bauhaus 93" size="14.0" />
          </font></TextField>
-      <TextArea fx:id="desc3" editable="false" layoutX="426.0" layoutY="63.0" prefHeight="145.0" prefWidth="149.0" text="Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all." wrapText="true" />
+      <TextArea fx:id="desc3" editable="false" layoutX="426.0" layoutY="63.0" prefHeight="145.0" prefWidth="149.0" text="Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all." wrapText="true">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></TextArea>
       <TextArea fx:id="desc4" editable="false" layoutX="426.0" layoutY="245.0" prefHeight="145.0" prefWidth="149.0" text="Eddie Brock (Tom Hardy) and Venom (Tom Hardy) are fugitives from the American government. While in Mexico, back in his universe, Eddie gets the idea of resetting life in NYC. But on their way back to 'Merica, the two are attacked by a monstrous spider-lizard creature that Venom recognizes." wrapText="true" />
       <TextField fx:id="rating1" alignment="CENTER" editable="false" layoutX="65.0" layoutY="171.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
          <font>

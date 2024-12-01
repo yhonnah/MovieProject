@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
@@ -36,9 +37,6 @@ public class ScheduleControlM1 {
     private Label cinema5;
 
     @FXML
-    private TextField date;
-
-    @FXML
     private ImageView movimg;
 
     @FXML
@@ -62,16 +60,20 @@ public class ScheduleControlM1 {
     @FXML
     private TextField time5;
 
+    @FXML
+    private Pane root;
+
     // Reference to the movie data
     private static String movieTitle = MoviePageController.movie1Title;
     private static Image movieImage = MoviePageController.movie1Image;
     private static String movieRating = MoviePageController.movie1Rate;
-    private static String movieDate = MoviePageController.moviedate;
 
     @FXML
     public void initialize() {
         // Check if movieTitle and movieImage are updated
         updateMovieDetails();
+        root.setStyle("-fx-background-color: #0E0F14");
+
     }
 
     private void updateMovieDetails() {
@@ -91,16 +93,10 @@ public class ScheduleControlM1 {
 
         if (movieRating != null && !movieRating.isEmpty()) {
             rating.setText(movieRating);
+            rating.setStyle("-fx-control-inner-background: #EEB51E;");
         } else {
             rating.setText("N/A");
         }
-
-        if (movieDate != null && !movieDate.isEmpty()) {
-            date.setText(movieDate);
-        } else {
-            date.setText("N/A");
-        }
-
     }
 
     @FXML
@@ -278,7 +274,6 @@ public class ScheduleControlM1 {
         movieTitle = title;
         movieImage = image;
         movieRating = rating;
-        movieDate = date;
 
         // Update UI elements
         if (title != null && !title.isEmpty()) {
@@ -299,10 +294,5 @@ public class ScheduleControlM1 {
             this.movimg.setImage(new Image("file:default-image.png")); // Ensure the path is correct
         }
 
-        if (date != null && !date.isEmpty()) {
-            this.date.setText(date);
-        } else {
-            this.date.setText("N/A");
-        }
     }
 }
