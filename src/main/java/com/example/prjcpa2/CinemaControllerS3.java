@@ -6,10 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -22,12 +23,11 @@ import java.util.*;
 public class CinemaControllerS3 {
 
     // Data structures
-    private Stack<String> undoStack = new Stack<>();
-    private Stack<String> redoStack = new Stack<>();
     private HashMap<String, String> reservations = new HashMap<>();
     private TreeSet<String> availableSeats = new TreeSet<>();
     private Map<String, CheckBox> seatCheckBoxes = new HashMap<>();
     private LinkedList<String> reservationHistory = new LinkedList<>();
+
 
     private boolean isProgrammaticChange = false;
 
@@ -59,11 +59,19 @@ public class CinemaControllerS3 {
     @FXML
     private TextField search;
 
+    @FXML
+    private Pane root;
+
+    @FXML
+    private Button removeButton;
+
     // Initialize seats and checkboxes
     @FXML
     public void initialize() {
         initializeSeats();
         initializeCheckBoxes();
+
+        root.setStyle("-fx-background-color: #0E0F14");
 
         if ("Admin".equals(AdminWController.userType)) {
             search.setVisible(true);
@@ -84,6 +92,7 @@ public class CinemaControllerS3 {
         }
     }
 
+    // Dynamically link CheckBoxes to seat IDs
     private void initializeCheckBoxes() {
         for (char row = 'A'; row <= 'E'; row++) {
             for (int col = 1; col <= 10; col++) {
@@ -107,6 +116,7 @@ public class CinemaControllerS3 {
         }
     }
 
+
     // Helper method to retrieve a CheckBox using reflection
     private CheckBox getCheckBoxByID(String seatID) {
         try {
@@ -122,101 +132,83 @@ public class CinemaControllerS3 {
     // Handle seat selection directly
     private void handleSeatSelection(String seatID, CheckBox checkBox) {
         if (!checkBox.isSelected() && reservations.containsKey(seatID)) {
-            undoStack.push("RESERVE:" + seatID);
             cancelReservation(seatID);
+            checkBox.setSelected(false); // Deselect after cancellation
+            System.out.println("Reservation for seat " + seatID + " has been canceled.");
         }
     }
+
+    @FXML
+    private void removeSelectedSeats(ActionEvent event) {
+        String guestNameInput = guestName.getText().trim(); // Use the guestName text field
+
+        // Validate the input name
+        if (guestNameInput.isEmpty()) {
+            status.setVisible(true);
+            status.setText("Please enter a guest name.");
+            return;
+        }
+
+        List<String> seatsToRemove = new ArrayList<>();
+
+        // Collect seats that match the guest name
+        for (Map.Entry<String, String> entry : reservations.entrySet()) {
+            String seatID = entry.getKey();
+            String reservedBy = entry.getValue();
+
+            if (reservedBy.equalsIgnoreCase(guestNameInput) && seatCheckBoxes.get(seatID).isSelected()) {
+                seatsToRemove.add(seatID);
+            }
+        }
+
+        if (seatsToRemove.isEmpty()) {
+            status.setVisible(true);
+            status.setText("No reservations found for " + guestNameInput + ".");
+            return;
+        }
+
+        // Remove reservations for the collected seats
+        for (String seatID : seatsToRemove) {
+            cancelReservation(seatID);
+            seatCheckBoxes.get(seatID).setSelected(false); // Deselect the checkbox
+        }
+
+        status.setVisible(true);
+        status.setText("Reservations for " + guestNameInput + " have been removed.");
+        saveSeatData(); // Save updated data
+        System.out.println("Reservations for " + guestNameInput + " removed and data saved.");
+
+        // Clear the guest name input field
+        guestName.clear();
+    }
+
+
+
+
 
     // Reserve a seat
     private void reserveSeat(String customerName, String seatID) {
         if (availableSeats.contains(seatID)) {
             availableSeats.remove(seatID);
             reservations.put(seatID, customerName);
-            undoStack.push("RESERVE:" + seatID);
-            redoStack.clear();
-            reservationHistory.add("Reserved: " + seatID + " for " + customerName);
             System.out.println("Seat " + seatID + " reserved for " + customerName);
+            reservationHistory.add("Reserved: " + seatID + " for " + customerName);
         } else {
             System.out.println("Seat " + seatID + " is unavailable.");
         }
     }
 
-    // Cancel a reservation
     private void cancelReservation(String seatID) {
         if (reservations.containsKey(seatID)) {
+            String guestName = reservations.get(seatID);
             availableSeats.add(seatID);
             reservations.remove(seatID);
-            reservationHistory.add("Canceled: " + seatID);
+            reservationHistory.add("Canceled: Seat " + seatID + " reserved by " + guestName);
             System.out.println("Reservation for seat " + seatID + " canceled.");
         }
     }
 
-    // Undo the last action
-    @FXML
-    void undoClick(ActionEvent event) {
-        if (!undoStack.isEmpty()) {
-            String action = undoStack.pop();
-            redoStack.push(action);
-            String[] parts = action.split(":");
-            String seatID = parts[1];
 
-            if (parts[0].equals("RESERVE")) {
-                cancelReservation(seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(false);  // Allow unticking
-                    isProgrammaticChange = false;
-                }
-            } else if (parts[0].equals("CANCEL")) {
-                reserveSeat("UndoCustomer", seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(true);  // Allow ticking
-                    isProgrammaticChange = false;
-                }
-            }
-            System.out.println("Undo action performed.");
-        } else {
-            System.out.println("No actions to undo.");
-        }
-    }
-
-    @FXML
-    void redoClick(ActionEvent event) {
-        if (!redoStack.isEmpty()) {
-            String action = redoStack.pop();
-            undoStack.push(action);
-            String[] parts = action.split(":");
-            String seatID = parts[1];
-
-            if (parts[0].equals("RESERVE")) {
-                reserveSeat("RedoCustomer", seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(true);  // Allow ticking
-                    isProgrammaticChange = false;
-                }
-            } else if (parts[0].equals("CANCEL")) {
-                cancelReservation(seatID);
-
-                CheckBox checkBox = seatCheckBoxes.get(seatID);
-                if (checkBox != null) {
-                    isProgrammaticChange = true;
-                    checkBox.setSelected(false);  // Allow unticking
-                    isProgrammaticChange = false;
-                }
-            }
-            System.out.println("Redo action performed.");
-        } else {
-            System.out.println("No actions to redo.");
-        }
-    }
 
     // Reserve seats for the entered guest name
     @FXML
@@ -237,15 +229,17 @@ public class CinemaControllerS3 {
         for (Map.Entry<String, CheckBox> entry : seatCheckBoxes.entrySet()) {
             String seatID = entry.getKey();
             CheckBox checkBox = entry.getValue();
-            if (checkBox.isSelected() && !reservations.containsKey(seatID)) {
-                reserveSeat(customerName, seatID);
+            if (checkBox.isSelected()) {
+                if (!reservations.containsKey(seatID)) {
+                    reserveSeat(customerName, seatID); // Reserve if not already reserved
+                }
             }
         }
 
         // Clear input fields and save data
         guestName.clear();
         guestEmail.clear();
-        saveSeatData(); // Save the data to a .properties file
+        saveSeatData();
         System.out.println("Reservations updated and saved.");
 
         // Show the popup if reservation succeeds
@@ -270,30 +264,25 @@ public class CinemaControllerS3 {
         }
     }
 
-    /**
-     * Save seat data to a .properties file.
-     */
+
     private void saveSeatData() {
         Properties seatProperties = new Properties();
-        String filename = title.getText() + "0507.properties";
+        String filename = title.getText() + "1220.properties";
 
         // Populate properties with reserved seat data
         reservations.forEach(seatProperties::setProperty);
 
         try (FileOutputStream output = new FileOutputStream(filename)) {
-            // Save properties to the file
             seatProperties.store(output, "Seat Reservations for " + title);
             System.out.println("Seat data saved to " + filename);
         } catch (IOException e) {
             System.err.println("Error saving seat data: " + e.getMessage());
         }
     }
-    /**
-     * Load seat data from a .properties file based on the movie title.
-     */
+
     public void loadSeatData() {
         Properties seatProperties = new Properties();
-        String filename = title.getText() + "0507.properties";
+        String filename = title.getText() + "1220.properties";
 
         try (FileInputStream input = new FileInputStream(filename)) {
             // Load properties from the file
@@ -321,13 +310,6 @@ public class CinemaControllerS3 {
         } catch (IOException e) {
             System.err.println("Error loading seat data: " + e.getMessage());
         }
-    }
-
-    // Debugging: Print all reservations
-    private void printReservations() {
-        System.out.println("Current Reservations:");
-        reservations.forEach((seatID, customerName) ->
-                System.out.println(seatID + ": " + customerName));
     }
 
     public void setMovieTitle(String movieTitle) {
