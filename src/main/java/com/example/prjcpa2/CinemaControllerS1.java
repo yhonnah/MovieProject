@@ -62,6 +62,9 @@ public class CinemaControllerS1 {
     @FXML
     private Pane root;
 
+    @FXML
+    private Button removeButton;
+
     // Initialize seats and checkboxes
     @FXML
     public void initialize() {
@@ -130,8 +133,58 @@ public class CinemaControllerS1 {
     private void handleSeatSelection(String seatID, CheckBox checkBox) {
         if (!checkBox.isSelected() && reservations.containsKey(seatID)) {
             cancelReservation(seatID);
+            checkBox.setSelected(false); // Deselect after cancellation
+            System.out.println("Reservation for seat " + seatID + " has been canceled.");
         }
     }
+
+    @FXML
+    private void removeSelectedSeats(ActionEvent event) {
+        String guestNameInput = guestName.getText().trim(); // Use the guestName text field
+
+        // Validate the input name
+        if (guestNameInput.isEmpty()) {
+            status.setVisible(true);
+            status.setText("Please enter a guest name.");
+            return;
+        }
+
+        List<String> seatsToRemove = new ArrayList<>();
+
+        // Collect seats that match the guest name
+        for (Map.Entry<String, String> entry : reservations.entrySet()) {
+            String seatID = entry.getKey();
+            String reservedBy = entry.getValue();
+
+            if (reservedBy.equalsIgnoreCase(guestNameInput) && seatCheckBoxes.get(seatID).isSelected()) {
+                seatsToRemove.add(seatID);
+            }
+        }
+
+        if (seatsToRemove.isEmpty()) {
+            status.setVisible(true);
+            status.setText("No reservations found for " + guestNameInput + ".");
+            return;
+        }
+
+        // Remove reservations for the collected seats
+        for (String seatID : seatsToRemove) {
+            cancelReservation(seatID);
+            seatCheckBoxes.get(seatID).setSelected(false); // Deselect the checkbox
+        }
+
+        status.setVisible(true);
+        status.setText("Reservations for " + guestNameInput + " have been removed.");
+        saveSeatData(); // Save updated data
+        System.out.println("Reservations for " + guestNameInput + " removed and data saved.");
+
+        // Clear the guest name input field
+        guestName.clear();
+    }
+
+
+
+
 
     // Reserve a seat
     private void reserveSeat(String customerName, String seatID) {
@@ -147,9 +200,10 @@ public class CinemaControllerS1 {
 
     private void cancelReservation(String seatID) {
         if (reservations.containsKey(seatID)) {
+            String guestName = reservations.get(seatID);
             availableSeats.add(seatID);
             reservations.remove(seatID);
-            reservationHistory.add("Canceled: " + seatID);
+            reservationHistory.add("Canceled: Seat " + seatID + " reserved by " + guestName);
             System.out.println("Reservation for seat " + seatID + " canceled.");
         }
     }
@@ -175,8 +229,10 @@ public class CinemaControllerS1 {
         for (Map.Entry<String, CheckBox> entry : seatCheckBoxes.entrySet()) {
             String seatID = entry.getKey();
             CheckBox checkBox = entry.getValue();
-            if (checkBox.isSelected() && !reservations.containsKey(seatID)) {
-                reserveSeat(customerName, seatID);
+            if (checkBox.isSelected()) {
+                if (!reservations.containsKey(seatID)) {
+                    reserveSeat(customerName, seatID); // Reserve if not already reserved
+                }
             }
         }
 
