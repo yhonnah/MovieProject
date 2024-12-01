@@ -10,14 +10,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.management.monitor.StringMonitor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class MoviePageController {
+
+    @FXML
+    private Pane root;
 
     @FXML
     private TextField date;
@@ -57,12 +63,6 @@ public class MoviePageController {
 
     @FXML
     private TextField rating4;
-
-    @FXML
-    private Button replace;
-
-    @FXML
-    private Button replace1;
 
     @FXML
     private TextField title1;
@@ -111,23 +111,38 @@ public class MoviePageController {
         loadRatings();
         loadDates();
 
+        root.setStyle("-fx-background-color: #0E0F14;");
+
         if (AdminWController.userType == null) {
             AdminWController.userType = "Guest";
         }
 
         if ("Guest".equals(AdminWController.userType)) {
-            title1.setEditable(false);
-            title2.setEditable(false);
-            title3.setEditable(false);
-            title4.setEditable(false);
+            title1.setText("Moana 2");
+            title2.setText("Wicked");
+            title3.setText("The Colors Within");
+            title4.setText("Venom: The Last Dance");
 
-            desc1.setEditable(false);
-            desc2.setEditable(false);
-            desc3.setEditable(false);
-            desc4.setEditable(false);
+            title1.setStyle("-fx-text-fill: #0E0F14; -fx-control-inner-background: #EEB51E");
+            title2.setStyle("-fx-text-fill: #0E0F14; -fx-control-inner-background: #EEB51E");
+            title3.setStyle("-fx-text-fill: #0E0F14; -fx-control-inner-background: #EEB51E");
+            title4.setStyle("-fx-text-fill: #0E0F14; -fx-control-inner-background: #EEB51E");
 
-            replace.setVisible(false);
-            replace1.setVisible(false);
+            desc1.setText("Moana 2 opens three years after the end of the first movie with the titular heroine (Auli'i Cravalho) endeavoring to break the curse of Nalo that has essentially isolated islands of people. Moana is searching the seas for the mythical island of Motufetu, which can reportedly unite these different cultures.");
+            desc2.setText("Set in the Land of Oz, mostly before Dorothy Gale's arrival from Kansas, it follows Elphaba as she embarks on her path to becoming the Wicked Witch of the West, and chronicles her friendship with her classmate Galinda, who becomes Glinda the Good.");
+            desc3.setText("Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all.");
+            desc4.setText("Eddie Brock (Tom Hardy) and Venom (Tom Hardy) are fugitives from the American government. While in Mexico, back in his universe, Eddie gets the idea of resetting life in NYC. But on their way back to 'Merica, the two are attacked by a monstrous spider-lizard creature that Venom recognizes.");
+
+            desc1.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
+            desc2.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
+            desc3.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
+            desc4.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
+
+            rating1.setText("G");
+            rating2.setText("PG");
+            rating3.setText("PG");
+            rating4.setText("R-13");
+
             date.setEditable(false);
 
         } else {
@@ -138,18 +153,12 @@ public class MoviePageController {
 
     // Set initial images based on the TextFields at stage launch
     private void setInitialImages() {
-        if (img1 != null) {
-            setImageForImageView(img1, "Moana.png");
-        }
-        if (img2 != null) {
-            setImageForImageView(img2, "Wicked.png");
-        }
-        if (img3 != null) {
-            setImageForImageView(img3, "Colors .png");
-        }
-        if (img4 != null) {
-            setImageForImageView(img4, fileName4 + ".png");
-        }
+        String basePath = "file:///C:/Users/Yohann/OneDrive%20-%20De%20La%20Salle%20University%20-%20Manila/DLSU/TERM%204/LBYCPA2/Final%20Project/Movie/src/Movie Pictures/";
+
+        img1.setImage(new Image(basePath + "Moana.png"));
+        img2.setImage(new Image(basePath + "Wicked.png"));
+        img3.setImage(new Image(basePath + "colors.png"));
+        img4.setImage(new Image(basePath + "venom.png"));
     }
 
     // Method to remove spaces from the filename
@@ -279,15 +288,6 @@ public class MoviePageController {
         }
     }
 
-    // Called when the "Replace Images" button is clicked
-    @FXML
-    void rplcclick(ActionEvent event) {
-        saveDescs();
-        setInitialImages();  // Update images based on modified titles
-        saveTitles();  // Save the updated titles to the properties file
-        saveRatings();
-        saveDate();
-    }
 
     @FXML
     void mov1(MouseEvent event) {
