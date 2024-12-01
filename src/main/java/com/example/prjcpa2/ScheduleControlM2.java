@@ -34,9 +34,6 @@ public class ScheduleControlM2 {
     private Label cinema4;
 
     @FXML
-    private Label cinema5;
-
-    @FXML
     private ImageView movimg;
 
     @FXML
