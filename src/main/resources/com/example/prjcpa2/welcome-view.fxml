@@ -8,7 +8,7 @@
    <children>
       <Label layoutX="104.0" layoutY="89.0" text="G2 Manila" textFill="WHITE">
          <font>
-            <Font name="Bodoni MT" size="90.0" />
+            <Font name="Bauhaus 93" size="90.0" />
          </font>
       </Label>
       <Button fx:id="enter" layoutX="226.0" layoutY="245.0" mnemonicParsing="false" onAction="#entclick" prefHeight="36.0" prefWidth="149.0" text="RESERVE">
