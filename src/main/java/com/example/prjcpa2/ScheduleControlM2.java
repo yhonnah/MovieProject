@@ -11,10 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import javafx.scene.input.MouseEvent;
 
 public class ScheduleControlM2 {
 
@@ -37,9 +37,6 @@ public class ScheduleControlM2 {
     private Label cinema5;
 
     @FXML
-    private TextField date;
-
-    @FXML
     private ImageView movimg;
 
     @FXML
@@ -48,16 +45,35 @@ public class ScheduleControlM2 {
     @FXML
     private Label title;
 
+    @FXML
+    private TextField time1;
+
+    @FXML
+    private TextField time2;
+
+    @FXML
+    private TextField time3;
+
+    @FXML
+    private TextField time4;
+
+    @FXML
+    private TextField time5;
+
+    @FXML
+    private Pane root;
+
     // Reference to the movie data
-    private static String movieTitle = MoviePageController.movie2Title;
-    private static Image movieImage = MoviePageController.movie2Image;
-    private static String movieRating = MoviePageController.movie2Rate;
-    private static String movieDate = MoviePageController.moviedate;
+    private static String movieTitle = MoviePageController.movie1Title;
+    private static Image movieImage = MoviePageController.movie1Image;
+    private static String movieRating = MoviePageController.movie1Rate;
 
     @FXML
     public void initialize() {
         // Check if movieTitle and movieImage are updated
         updateMovieDetails();
+        root.setStyle("-fx-background-color: #0E0F14");
+
     }
 
     private void updateMovieDetails() {
@@ -77,13 +93,9 @@ public class ScheduleControlM2 {
 
         if (movieRating != null && !movieRating.isEmpty()) {
             rating.setText(movieRating);
+            rating.setStyle("-fx-control-inner-background: #EEB51E;");
         } else {
             rating.setText("N/A");
-        }
-        if (movieDate != null && !movieDate.isEmpty()) {
-            date.setText(movieDate);
-        } else {
-            date.setText("N/A");
         }
     }
 
@@ -135,6 +147,7 @@ public class ScheduleControlM2 {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     void time2Click(MouseEvent event) {
@@ -233,7 +246,7 @@ public class ScheduleControlM2 {
             String movieTitle = title.getText();
 
             // Get the theater number (adjust for the relevant label, e.g., cinema1)
-            String theaterNumber = cinema5.getText();
+            String theaterNumber = cinema1.getText();
 
             // Load the CinemaControllerS1 FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("CS5-view.fxml"));
@@ -261,7 +274,6 @@ public class ScheduleControlM2 {
         movieTitle = title;
         movieImage = image;
         movieRating = rating;
-        movieDate = date;
 
         // Update UI elements
         if (title != null && !title.isEmpty()) {
@@ -282,10 +294,5 @@ public class ScheduleControlM2 {
             this.movimg.setImage(new Image("file:default-image.png")); // Ensure the path is correct
         }
 
-        if (date != null && !date.isEmpty()) {
-            this.date.setText(date);
-        } else {
-            this.date.setText("N/A");
-        }
     }
 }
