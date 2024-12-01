@@ -16,9 +16,9 @@
             <Font name="Bodoni MT" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="177.0" layoutY="190.0" prefHeight="21.0" prefWidth="244.0" text="A cinema Self-Reservation System" textFill="WHITE">
+      <Label layoutX="177.0" layoutY="190.0" prefHeight="21.0" prefWidth="244.0" text="A cinema Self-Reservation System" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Book Antiqua" size="16.0" />
+            <Font name="Arial" size="15.0" />
          </font>
       </Label>
       <TextField fx:id="invi_username" layoutX="226.0" layoutY="260.0" text="guest" visible="false" />
