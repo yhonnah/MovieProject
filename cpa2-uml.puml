@@ -1,0 +1,430 @@
+@startuml
+class com.example.prjcpa2.CinemaControllerS3 {
+- Stack<String> undoStack
+- Stack<String> redoStack
+- HashMap<String,String> reservations
+- TreeSet<String> availableSeats
+- Map<String,CheckBox> seatCheckBoxes
+- boolean isProgrammaticChange
+- CheckBox A1
+- CheckBox B1
+- CheckBox C1
+- CheckBox D1
+- CheckBox E1
+- TextField guestName
+- TextField guestEmail
+- Label status
+- Button return2
+- Button redo
+- Button reserve
+- Label theaternumber
+- Label title
+- Button undo
++ void initialize()
+- void initializeSeats()
+- void initializeCheckBoxes()
+- CheckBox getCheckBoxByID(String)
+- void handleSeatSelection(String,CheckBox)
+- void reserveSeat(String,String)
+- void cancelReservation(String)
+~ void undoClick(ActionEvent)
+~ void redoClick(ActionEvent)
+~ void reserveClick(ActionEvent)
+- void saveSeatData()
++ void loadSeatData()
+- void printReservations()
++ void setMovieTitle(String)
++ void setTheaterNumber(String)
+~ void retClick2(ActionEvent)
++ void goback(Stage)
+}
+
+
+class com.example.prjcpa2.CinemaControllerS4 {
+- Stack<String> undoStack
+- Stack<String> redoStack
+- HashMap<String,String> reservations
+- TreeSet<String> availableSeats
+- Map<String,CheckBox> seatCheckBoxes
+- boolean isProgrammaticChange
+- CheckBox A1
+- CheckBox B1
+- CheckBox C1
+- CheckBox D1
+- CheckBox E1
+- TextField guestName
+- TextField guestEmail
+- Label status
+- Button return2
+- Button redo
+- Button reserve
+- Label theaternumber
+- Label title
+- Button undo
++ void initialize()
+- void initializeSeats()
+- void initializeCheckBoxes()
+- CheckBox getCheckBoxByID(String)
+- void handleSeatSelection(String,CheckBox)
+- void reserveSeat(String,String)
+- void cancelReservation(String)
+~ void undoClick(ActionEvent)
+~ void redoClick(ActionEvent)
+~ void reserveClick(ActionEvent)
+- void saveSeatData()
++ void loadSeatData()
+- void printReservations()
++ void setMovieTitle(String)
++ void setTheaterNumber(String)
+~ void retClick2(ActionEvent)
++ void goback(Stage)
+}
+
+
+class com.example.prjcpa2.ScheduleControlM1 {
+- Button back
+- Label cinema1
+- Label cinema2
+- Label cinema3
+- Label cinema4
+- Label cinema5
+- TextField date
+- ImageView movimg
+- TextField rating
+- Label title
+- TextField time1
+- TextField time2
+- TextField time3
+- TextField time4
+- TextField time5
+- {static} String movieTitle
+- {static} Image movieImage
+- {static} String movieRating
+- {static} String movieDate
++ void initialize()
+- void updateMovieDetails()
+~ void backClick(ActionEvent)
++ void goback(Stage)
+~ void time1Click(MouseEvent)
+~ void time2Click(MouseEvent)
+~ void time3Click(MouseEvent)
+~ void time4Click(MouseEvent)
+~ void time5Click(MouseEvent)
++ void setMovieDetails(String,Image,String,String)
+}
+
+
+class com.example.prjcpa2.CinemaControllerS1 {
+- Stack<String> undoStack
+- Stack<String> redoStack
+- HashMap<String,String> reservations
+- TreeSet<String> availableSeats
+- Map<String,CheckBox> seatCheckBoxes
+- boolean isProgrammaticChange
+- CheckBox A1
+- CheckBox B1
+- CheckBox C1
+- CheckBox D1
+- CheckBox E1
+- TextField guestName
+- TextField guestEmail
+- Label status
+- Button return2
+- Button redo
+- Button reserve
+- Label theaternumber
+- Label title
+- Button undo
++ void initialize()
+- void initializeSeats()
+- void initializeCheckBoxes()
+- CheckBox getCheckBoxByID(String)
+- void handleSeatSelection(String,CheckBox)
+- void reserveSeat(String,String)
+- void cancelReservation(String)
+~ void undoClick(ActionEvent)
+~ void redoClick(ActionEvent)
+~ void reserveClick(ActionEvent)
+- void saveSeatData()
++ void loadSeatData()
++ void setMovieTitle(String)
++ void setTheaterNumber(String)
+~ void retClick2(ActionEvent)
++ void goback(Stage)
+}
+
+
+class com.example.prjcpa2.Credentials {
++ {static} String[][] GuestCredentials
++ {static} String[][] Credentials001
++ {static} String[][] Credentials002
++ {static} String[][] Credentials003
++ {static} String[][] Credentials004
++ {static} String getUserType(String,String)
+}
+
+
+class com.example.prjcpa2.ScheduleControlM3 {
+- Button back
+- Label cinema1
+- Label cinema2
+- Label cinema3
+- Label cinema4
+- Label cinema5
+- TextField date
+- ImageView movimg
+- TextField rating
+- Label title
+- {static} String movieTitle
+- {static} Image movieImage
+- {static} String movieRating
+- {static} String movieDate
++ void initialize()
+- void updateMovieDetails()
+~ void backClick(ActionEvent)
++ void goback(Stage)
+~ void time1Click(MouseEvent)
+~ void time2Click(MouseEvent)
+~ void time3Click(MouseEvent)
+~ void time4Click(MouseEvent)
+~ void time5Click(MouseEvent)
++ void setMovieDetails(String,Image,String,String)
+}
+
+
+class com.example.prjcpa2.CinemaControllerS5 {
+- Stack<String> undoStack
+- Stack<String> redoStack
+- HashMap<String,String> reservations
+- TreeSet<String> availableSeats
+- Map<String,CheckBox> seatCheckBoxes
+- boolean isProgrammaticChange
+- CheckBox A1
+- CheckBox B1
+- CheckBox C1
+- CheckBox D1
+- CheckBox E1
+- TextField guestName
+- TextField guestEmail
+- Label status
+- Button return2
+- Button redo
+- Button reserve
+- Label theaternumber
+- Label title
+- Button undo
++ void initialize()
+- void initializeSeats()
+- void initializeCheckBoxes()
+- CheckBox getCheckBoxByID(String)
+- void handleSeatSelection(String,CheckBox)
+- void reserveSeat(String,String)
+- void cancelReservation(String)
+~ void undoClick(ActionEvent)
+~ void redoClick(ActionEvent)
+~ void reserveClick(ActionEvent)
+- void saveSeatData()
++ void loadSeatData()
+- void printReservations()
++ void setMovieTitle(String)
++ void setTheaterNumber(String)
+~ void retClick2(ActionEvent)
++ void goback(Stage)
+}
+
+
+class com.example.prjcpa2.WelcomePage {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+class com.example.prjcpa2.AdminWController {
+- Label cstmrpage
+- PasswordField password
+- Label subtitle
+- TextField username
+- Button login
++ {static} String userType
+~ void loginClick(ActionEvent)
++ void cstmrlogin(Stage)
+~ void hyperlink(MouseEvent)
++ void enterlogin(Stage)
+}
+
+
+class com.example.prjcpa2.ThankYouPopup {
+- Button tyreturn
+~ void tyreturnClick(ActionEvent)
+}
+
+
+class com.example.prjcpa2.ScheduleControlM2 {
+- Button back
+- Label cinema1
+- Label cinema2
+- Label cinema3
+- Label cinema4
+- Label cinema5
+- TextField date
+- ImageView movimg
+- TextField rating
+- Label title
+- {static} String movieTitle
+- {static} Image movieImage
+- {static} String movieRating
+- {static} String movieDate
++ void initialize()
+- void updateMovieDetails()
+~ void backClick(ActionEvent)
++ void goback(Stage)
+~ void time1Click(MouseEvent)
+~ void time2Click(MouseEvent)
+~ void time3Click(MouseEvent)
+~ void time4Click(MouseEvent)
+~ void time5Click(MouseEvent)
++ void setMovieDetails(String,Image,String,String)
+}
+
+
+class com.example.prjcpa2.WelcomeController {
+- Label adminpage
+- Button enter
+- PasswordField invi_password
+- TextField invi_username
++ {static} String userType
++ void enterlogin(Stage)
+~ void entclick(ActionEvent)
++ void adminlogin(Stage)
+~ void hyperlink(MouseEvent)
+}
+
+
+class com.example.prjcpa2.ScheduleControlM4 {
+- Button back
+- Label cinema1
+- Label cinema2
+- Label cinema3
+- Label cinema4
+- Label cinema5
+- TextField date
+- ImageView movimg
+- TextField rating
+- Label title
+- {static} String movieTitle
+- {static} Image movieImage
+- {static} String movieRating
+- {static} String movieDate
++ void initialize()
+- void updateMovieDetails()
+~ void backClick(ActionEvent)
++ void goback(Stage)
+~ void time1Click(MouseEvent)
+~ void time2Click(MouseEvent)
+~ void time3Click(MouseEvent)
+~ void time4Click(MouseEvent)
+~ void time5Click(MouseEvent)
++ void setMovieDetails(String,Image,String,String)
+}
+
+
+class com.example.prjcpa2.CinemaControllerS2 {
+- Stack<String> undoStack
+- Stack<String> redoStack
+- HashMap<String,String> reservations
+- TreeSet<String> availableSeats
+- Map<String,CheckBox> seatCheckBoxes
+- boolean isProgrammaticChange
+- CheckBox A1
+- CheckBox B1
+- CheckBox C1
+- CheckBox D1
+- CheckBox E1
+- TextField guestName
+- TextField guestEmail
+- Label status
+- Button return2
+- Button redo
+- Button reserve
+- Label theaternumber
+- Label title
+- Button undo
++ void initialize()
+- void initializeSeats()
+- void initializeCheckBoxes()
+- CheckBox getCheckBoxByID(String)
+- void handleSeatSelection(String,CheckBox)
+- void reserveSeat(String,String)
+- void cancelReservation(String)
+~ void undoClick(ActionEvent)
+~ void redoClick(ActionEvent)
+~ void reserveClick(ActionEvent)
+- void saveSeatData()
++ void loadSeatData()
++ void setMovieTitle(String)
++ void setTheaterNumber(String)
+~ void retClick2(ActionEvent)
++ void goback(Stage)
+}
+
+
+class com.example.prjcpa2.MoviePageController {
+- TextField date
+- TextArea desc1
+- TextArea desc2
+- TextArea desc3
+- TextArea desc4
+- ImageView img1
+- ImageView img2
+- ImageView img3
+- ImageView img4
+- TextField rating1
+- TextField rating2
+- TextField rating3
+- TextField rating4
+- Button replace
+- Button replace1
+- TextField title1
+- TextField title2
+- TextField title3
+- TextField title4
++ {static} String movie1Title
++ {static} String movie2Title
++ {static} String movie3Title
++ {static} String movie4Title
++ {static} Image movie1Image
++ {static} Image movie2Image
++ {static} Image movie3Image
++ {static} Image movie4Image
++ {static} String movie1Rate
++ {static} String movie2Rate
++ {static} String movie3Rate
++ {static} String movie4Rate
++ {static} String moviedate
+- {static} String PROPERTIES_FILE
+- {static} String PROPERTIES_FILE2
+- {static} String PROPERTIES_FILE3
+- {static} String PROPERTIES_FILE4
++ void initialize()
+- void setInitialImages()
+- String removeSpaces(String)
+- void setImageForImageView(ImageView,String)
+- void saveDescs()
+- void saveRatings()
+- void saveTitles()
+- void saveDate()
+- void loadTitles()
+- void loadDescs()
+- void loadRatings()
+- void loadDates()
+~ void rplcclick(ActionEvent)
+~ void mov1(MouseEvent)
+~ void mov2(MouseEvent)
+~ void mov3(MouseEvent)
+~ void mov4(MouseEvent)
+}
+
+
+
+
+javafx.application.Application <|-- com.example.prjcpa2.WelcomePage
+@enduml

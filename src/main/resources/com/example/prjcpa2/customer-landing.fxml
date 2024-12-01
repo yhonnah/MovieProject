@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prjcpa2.MoviePageController">
+   <children>
+      <Label layoutX="6.0" layoutY="2.0" prefHeight="46.0" prefWidth="149.0" text="G2 Manila">
+         <font>
+            <Font name="Bodoni MT" size="33.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img1" fitHeight="145.0" fitWidth="99.0" layoutX="41.0" layoutY="50.0" onMouseClicked="#mov1" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../../../Desktop/8z2m2qjb94wc1.png" />
+         </image></ImageView>
+      <ImageView fx:id="img3" fitHeight="145.0" fitWidth="99.0" layoutX="317.0" layoutY="50.0" onMouseClicked="#mov3" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../placeholder.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img2" fitHeight="145.0" fitWidth="99.0" layoutX="41.0" layoutY="238.0" onMouseClicked="#mov2" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../placeholder.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img4" fitHeight="145.0" fitWidth="99.0" layoutX="317.0" layoutY="238.0" onMouseClicked="#mov4" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../../placeholder.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="title1" alignment="CENTER" editable="false" layoutX="151.0" layoutY="34.0" text="RUSH" />
+      <TextField fx:id="title2" alignment="CENTER" editable="false" layoutX="151.0" layoutY="213.0" text="THE FIRST SLAM DUNK" />
+      <TextArea fx:id="desc1" editable="false" layoutX="151.0" layoutY="63.0" prefHeight="145.0" prefWidth="149.0" text="James Hunt and Niki&#10;Lauda, two extremely &#10;skilled Formula One &#10;racers, have an intense &#10;rivalry with each other. &#10;However, it is their &#10;enmity that pushes &#10;them to their limits. [R]" />
+      <TextArea fx:id="desc2" editable="false" layoutX="151.0" layoutY="245.0" prefHeight="145.0" prefWidth="149.0" text="The story follows &#10;17-year-old Ryota &#10;Miyagi, who struggles to&#10;accomplish his late elder&#10;brother's dream of &#10;becoming a basketball &#10;star. [PG]" />
+      <TextField fx:id="title3" alignment="CENTER" layoutX="426.0" layoutY="34.0" text="SPACE JAM" />
+      <Button fx:id="replace" layoutX="330.0" layoutY="202.0" mnemonicParsing="false" onAction="#rplcclick" text="Replace All" />
+      <Button fx:id="replace1" layoutX="53.0" layoutY="202.0" mnemonicParsing="false" onAction="#rplcclick" text="Replace All" />
+      <TextField fx:id="title4" alignment="CENTER" editable="false" layoutX="426.0" layoutY="214.0" text="REWIND" />
+      <TextArea fx:id="desc3" editable="false" layoutX="426.0" layoutY="63.0" prefHeight="145.0" prefWidth="149.0" text="In a desperate attempt &#10;to win a basketball &#10;match and earn their&#10;freedom, the Looney &#10;Tunes seek the aid of &#10;retired basketball &#10;champion, Michael &#10;Jordan. [PG]" />
+      <TextArea fx:id="desc4" editable="false" layoutX="426.0" layoutY="245.0" prefHeight="145.0" prefWidth="149.0" text="Mary loves John her &#10;entire life. John's &#10;priorities change, &#10;straining their relation&#10;leading to a tragic &#10;accident that takes &#10;Mary's life. A divine&#10;proposition allows &#10;John to rewind time.&#10;[PG]" />
+      <TextField fx:id="rating1" alignment="CENTER" editable="false" layoutX="30.0" layoutY="183.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="rating2" alignment="CENTER" editable="false" layoutX="95.0" layoutY="371.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="rating3" alignment="CENTER" layoutX="367.0" layoutY="183.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="rating4" alignment="CENTER" editable="false" layoutX="310.0" layoutY="371.0" prefHeight="25.0" prefWidth="50.0" text="PG-13">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="date" alignment="CENTER" layoutX="310.0" layoutY="21.0" prefHeight="25.0" prefWidth="113.0" text="Mon, Dec. 2, 2024" />
+   </children>
+</Pane>

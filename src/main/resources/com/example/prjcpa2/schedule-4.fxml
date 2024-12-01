@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prjcpa2.ScheduleControlM4">
+   <children>
+      <ImageView fx:id="movimg" fitHeight="303.0" fitWidth="209.0" layoutX="21.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Movie%20Pictures/THEFIRSTSLAMDUNK.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="title" layoutX="241.0" layoutY="54.0" prefHeight="43.0" prefWidth="348.0" text="THE CONJURING" textAlignment="CENTER">
+         <font>
+            <Font name="Segoe UI Black" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="242.0" layoutY="97.0" text="Available Timeslots:">
+         <font>
+            <Font name="Segoe UI" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="back" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#backClick" text="&lt; Return" />
+      <TextField fx:id="time1" alignment="CENTER" editable="false" layoutX="242.0" layoutY="130.0" onMouseClicked="#time1Click" text="12:00 PM - 2:00 PM" />
+      <TextField fx:id="time2" alignment="CENTER" editable="false" layoutX="242.0" layoutY="165.0" onMouseClicked="#time2Click" text="2:30 PM - 4:30 PM" />
+      <Label fx:id="cinema1" layoutX="415.0" layoutY="132.0" text="CINEMA 4">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="time3" alignment="CENTER" editable="false" layoutX="242.0" layoutY="200.0" onMouseClicked="#time3Click" text="5:00 PM - 7:00 PM" />
+      <TextField fx:id="time4" alignment="CENTER" editable="false" layoutX="242.0" layoutY="236.0" onMouseClicked="#time4Click" text="7:30 PM - 9:30 PM" />
+      <Label fx:id="cinema2" layoutX="415.0" layoutY="167.0" text="CINEMA 3">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="cinema3" layoutX="415.0" layoutY="202.0" text="CINEMA 2">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="cinema4" layoutX="415.0" layoutY="238.0" text="CINEMA 1">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="243.0" layoutY="310.0" text="Designated Date:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="date" alignment="CENTER" editable="false" layoutX="236.0" layoutY="332.0" prefHeight="25.0" prefWidth="162.0" text="Monday, December 2, 2024" />
+      <Label layoutX="415.0" layoutY="310.0" text="RATING:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="rating" alignment="CENTER" editable="false" layoutX="415.0" layoutY="332.0" prefHeight="25.0" prefWidth="55.0" text="PG-13">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="time5" alignment="CENTER" editable="false" layoutX="242.0" layoutY="269.0" onMouseClicked="#time5Click" text="10:00 PM - 12:00 AM" />
+      <Label fx:id="cinema5" layoutX="415.0" layoutY="271.0" text="CINEMA 4">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

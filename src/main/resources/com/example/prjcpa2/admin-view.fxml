@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prjcpa2.AdminWController">
+   <children>
+      <Label layoutX="104.0" layoutY="89.0" text="G2 Manila">
+         <font>
+            <Font name="Bodoni MT" size="90.0" />
+         </font>
+      </Label>
+      <Button fx:id="login" layoutX="271.0" layoutY="295.0" mnemonicParsing="false" onAction="#loginClick" text="ENTER">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="190.0" layoutY="190.0" prefHeight="21.0" prefWidth="216.0" text="Employee/Admin Login Page">
+         <font>
+            <Font name="Book Antiqua" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="cstmrpage" layoutX="247.0" layoutY="371.0" onMouseClicked="#hyperlink" prefHeight="15.0" prefWidth="102.0" text="Back to Customer Page" underline="true">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="password" layoutX="226.0" layoutY="258.0" />
+      <TextField fx:id="username" layoutX="226.0" layoutY="224.0" />
+      <Label layoutX="164.0" layoutY="228.0" text="Username">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="164.0" layoutY="262.0" text="Password">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="subtitle" layoutX="116.0" layoutY="336.0" text="Invalid credentials. Please try again or enter as a customer to proceed." visible="false" />
+   </children>
+</Pane>
