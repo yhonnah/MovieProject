@@ -35,13 +35,10 @@ public class AdminWController {
         String enteredUsername = username.getText();
         String enteredPassword = password.getText();
 
-        // Debug message for testing
         System.out.println("Entered Username: " + enteredUsername);
         System.out.println("Entered Password: " + enteredPassword);
 
         userType = Credentials.getUserType(enteredUsername, enteredPassword);
-
-        // If login is successful, it displays the User type in the terminal (for debugging), and launches a new stage using the function "start2"
 
         if (!userType.equals("INVALID")) {
             System.out.println("User type: " + userType + ". Logging in...");

@@ -73,10 +73,7 @@ public class CinemaControllerS1 {
 
         root.setStyle("-fx-background-color: #0E0F14");
 
-        if ("Admin".equals(AdminWController.userType)) {
-            search.setVisible(true);
-
-        } else if ("Guest".equals(AdminWController.userType)) {
+        if ("Guest".equals(AdminWController.userType)) {
             search.setVisible(false);
         } else {
             System.out.println("Error: Invalid userType: " + AdminWController.userType);
