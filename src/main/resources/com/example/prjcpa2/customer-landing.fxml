@@ -30,7 +30,7 @@
             <Image url="@../../../../../../placeholder.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="img1" fitHeight="174.0" fitWidth="120.0" layoutX="31.0" layoutY="128.0" onMouseClicked="#mov2" pickOnBounds="true">
+      <ImageView fx:id="img1" fitHeight="174.0" fitWidth="120.0" layoutX="31.0" layoutY="128.0" onMouseClicked="#mov1" pickOnBounds="true">
          <image>
             <Image url="@../../../../../../placeholder.jpg" />
          </image>
