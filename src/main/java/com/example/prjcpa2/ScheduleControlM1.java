@@ -1,6 +1,5 @@
 package com.example.prjcpa2;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,9 +34,6 @@ public class ScheduleControlM1 {
     private Label cinema4;
 
     @FXML
-    private Label cinema5;
-
-    @FXML
     private ImageView movimg;
 
     @FXML
@@ -46,19 +43,7 @@ public class ScheduleControlM1 {
     private Label title;
 
     @FXML
-    private TextField time1;
-
-    @FXML
-    private TextField time2;
-
-    @FXML
-    private TextField time3;
-
-    @FXML
-    private TextField time4;
-
-    @FXML
-    private TextField time5;
+    private TextArea desc1;
 
     @FXML
     private Pane root;
@@ -67,6 +52,7 @@ public class ScheduleControlM1 {
     private static String movieTitle = MoviePageController.movie1Title;
     private static Image movieImage = MoviePageController.movie1Image;
     private static String movieRating = MoviePageController.movie1Rate;
+    private static String movieDesc = MoviePageController.movie1Desc;
 
     @FXML
     public void initialize() {
@@ -97,10 +83,17 @@ public class ScheduleControlM1 {
         } else {
             rating.setText("N/A");
         }
+
+        if (movieDesc != null && !movieDesc.isEmpty()) {
+            desc1.setText(movieDesc);
+        } else {
+            desc1.setText("Description not available.");
+        }
+
     }
 
     @FXML
-    void backClick(ActionEvent event) {
+    void backClick() {
         Stage currentStage = (Stage) back.getScene().getWindow();
         try {
             goback(new Stage());
@@ -269,11 +262,12 @@ public class ScheduleControlM1 {
         }
     }
 
-    public void setMovieDetails(String title, Image image, String rating, String date) {
+    public void setMovieDetails(String title, Image image, String rating, String desc) {
         // Update movieTitle and movieImage variables
         movieTitle = title;
         movieImage = image;
         movieRating = rating;
+        movieDesc = desc;
 
         // Update UI elements
         if (title != null && !title.isEmpty()) {
@@ -292,6 +286,12 @@ public class ScheduleControlM1 {
             this.movimg.setImage(image);
         } else {
             this.movimg.setImage(new Image("file:default-image.png")); // Ensure the path is correct
+        }
+
+        if (desc != null && !desc.isEmpty()) {
+            this.desc1.setText(desc);
+        } else {
+            this.desc1.setText("Description not available.");
         }
 
     }

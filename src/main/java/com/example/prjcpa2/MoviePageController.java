@@ -1,22 +1,16 @@
 package com.example.prjcpa2;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javax.management.monitor.StringMonitor;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -91,6 +85,11 @@ public class MoviePageController {
     public static String movie3Rate = "PG";
     public static String movie4Rate = "R13";
 
+    public static String movie1Desc = "Moana 2 opens three years after the end of the first movie with the titular heroine (Auli'i Cravalho) endeavoring to break the curse of Nalo that has essentially isolated islands of people. Moana is searching the seas for the mythical island of Motufetu, which can reportedly unite these different cultures.\")";
+    public static String movie2Desc = "Set in the Land of Oz, mostly before Dorothy Gale's arrival from Kansas, it follows Elphaba as she embarks on her path to becoming the Wicked Witch of the West, and chronicles her friendship with her classmate Galinda, who becomes Glinda the Good.";
+    public static String movie3Desc = "Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all.";
+    public static String movie4Desc = "Eddie Brock (Tom Hardy) and Venom (Tom Hardy) are fugitives from the American government. While in Mexico, back in his universe, Eddie gets the idea of resetting life in NYC. But on their way back to 'Merica, the two are attacked by a monstrous spider-lizard creature that Venom recognizes.";
+
     public static String moviedate;
 
     // Path to the properties file
@@ -128,11 +127,6 @@ public class MoviePageController {
             title3.setStyle("-fx-text-fill: #0E0F14; -fx-control-inner-background: #EEB51E");
             title4.setStyle("-fx-text-fill: #0E0F14; -fx-control-inner-background: #EEB51E");
 
-            desc1.setText("Moana 2 opens three years after the end of the first movie with the titular heroine (Auli'i Cravalho) endeavoring to break the curse of Nalo that has essentially isolated islands of people. Moana is searching the seas for the mythical island of Motufetu, which can reportedly unite these different cultures.");
-            desc2.setText("Set in the Land of Oz, mostly before Dorothy Gale's arrival from Kansas, it follows Elphaba as she embarks on her path to becoming the Wicked Witch of the West, and chronicles her friendship with her classmate Galinda, who becomes Glinda the Good.");
-            desc3.setText("Totsuko is a high school student with the ability to see the 'colors' of others. Colors of bliss, excitement, and serenity, plus a color she treasures as her favorite. Kimi, a classmate at her school, gives off the most beautiful color of all.");
-            desc4.setText("Eddie Brock (Tom Hardy) and Venom (Tom Hardy) are fugitives from the American government. While in Mexico, back in his universe, Eddie gets the idea of resetting life in NYC. But on their way back to 'Merica, the two are attacked by a monstrous spider-lizard creature that Venom recognizes.");
-
             desc1.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
             desc2.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
             desc3.setStyle("-fx-text-fill: white; -fx-control-inner-background: #0E0F14; -fx-font-family: 'Arial Rounded MT Bold';");
@@ -159,79 +153,6 @@ public class MoviePageController {
         img2.setImage(new Image(basePath + "Wicked.png"));
         img3.setImage(new Image(basePath + "colors.png"));
         img4.setImage(new Image(basePath + "venom.png"));
-    }
-
-    // Method to remove spaces from the filename
-    private String removeSpaces(String input) {
-        return input.replace(" ", "");
-    }
-
-    // Method to set an image for an ImageView
-    private void setImageForImageView(ImageView imageView, String fileName) {
-        String basePath = "/src/Movie Pictures/";
-        String imagePath = basePath + fileName;
-
-        try {
-            Image image = new Image(imagePath);
-            imageView.setImage(image);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: Image file not found or invalid: " + imagePath);
-            e.printStackTrace();
-        }
-    }
-
-    // Save titles to the properties file
-    private void saveDescs() {
-        Properties properties2 = new Properties();
-        properties2.setProperty("desc1", desc1.getText());
-        properties2.setProperty("desc2", desc2.getText());
-        properties2.setProperty("desc3", desc3.getText());
-        properties2.setProperty("desc4", desc4.getText());
-
-        try (FileOutputStream out = new FileOutputStream(PROPERTIES_FILE2)) {
-            properties2.store(out, "Movie Descriptions");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void saveRatings() {
-        Properties properties3 = new Properties();
-        properties3.setProperty("rating1", rating1.getText());
-        properties3.setProperty("rating2", rating2.getText());
-        properties3.setProperty("rating3", rating3.getText());
-        properties3.setProperty("rating4", rating4.getText());
-
-        try (FileOutputStream out = new FileOutputStream(PROPERTIES_FILE3)) {
-            properties3.store(out, "Movie Ratings");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void saveTitles() {
-        Properties properties = new Properties();
-        properties.setProperty("title1", title1.getText());
-        properties.setProperty("title2", title2.getText());
-        properties.setProperty("title3", title3.getText());
-        properties.setProperty("title4", title4.getText());
-
-        try (FileOutputStream out = new FileOutputStream(PROPERTIES_FILE)) {
-            properties.store(out, "Movie Titles");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void saveDate() {
-        Properties properties4 = new Properties();
-        properties4.setProperty("date", date.getText());
-
-        try (FileOutputStream out = new FileOutputStream(PROPERTIES_FILE4)) {
-            properties4.store(out, "Movie Date");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     // Load titles from the properties file
@@ -290,7 +211,7 @@ public class MoviePageController {
 
 
     @FXML
-    void mov1(MouseEvent event) {
+    void mov1() {
         Stage currentStage = (Stage) img1.getScene().getWindow();
         try {
             // Set static variables for use in the ScheduleControlM1 controller
@@ -305,7 +226,7 @@ public class MoviePageController {
             ScheduleControlM1 controller = fxmlLoader.getController();
 
             // Pass data to ScheduleControlM1
-            controller.setMovieDetails(movie1Title, movie1Image, movie1Rate, moviedate);
+            controller.setMovieDetails(movie1Title, movie1Image, movie1Rate, movie1Desc);
 
             // Show the new stage
             Stage newStage = new Stage();
@@ -321,7 +242,7 @@ public class MoviePageController {
     }
 
     @FXML
-    void mov2(MouseEvent event) {
+    void mov2() {
         Stage currentStage = (Stage) img2.getScene().getWindow();
         try {
             // Set static variables for use in the ScheduleControlM2 controller
@@ -336,7 +257,7 @@ public class MoviePageController {
             ScheduleControlM2 controller = fxmlLoader.getController();
 
             // Pass data to ScheduleControlM2
-            controller.setMovieDetails(movie2Title, movie2Image, movie2Rate, moviedate);
+            controller.setMovieDetails(movie2Title, movie2Image, movie2Rate);
 
             // Show the new stage
             Stage newStage = new Stage();
@@ -352,7 +273,7 @@ public class MoviePageController {
     }
 
     @FXML
-    void mov3(MouseEvent event) {
+    void mov3() {
         Stage currentStage = (Stage) img3.getScene().getWindow();
         try {
             // Set static variables for use in the ScheduleControlM3 controller
@@ -367,7 +288,7 @@ public class MoviePageController {
             ScheduleControlM3 controller = fxmlLoader.getController();
 
             // Pass data to ScheduleControlM3
-            controller.setMovieDetails(movie3Title, movie3Image, movie3Rate, moviedate);
+            controller.setMovieDetails(movie3Title, movie3Image, movie3Rate);
 
             // Show the new stage
             Stage newStage = new Stage();
@@ -383,7 +304,7 @@ public class MoviePageController {
     }
 
     @FXML
-    void mov4(MouseEvent event) {
+    void mov4() {
         Stage currentStage = (Stage) img4.getScene().getWindow();
         try {
             // Set static variables for use in the ScheduleControlM4 controller

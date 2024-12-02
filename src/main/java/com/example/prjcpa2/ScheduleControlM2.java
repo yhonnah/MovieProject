@@ -1,6 +1,5 @@
 package com.example.prjcpa2;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,19 +43,7 @@ public class ScheduleControlM2 {
     private Label title;
 
     @FXML
-    private TextField time1;
-
-    @FXML
-    private TextField time2;
-
-    @FXML
-    private TextField time3;
-
-    @FXML
-    private TextField time4;
-
-    @FXML
-    private TextField time5;
+    private TextArea desc;
 
     @FXML
     private Pane root;
@@ -64,6 +52,7 @@ public class ScheduleControlM2 {
     private static String movieTitle = MoviePageController.movie1Title;
     private static Image movieImage = MoviePageController.movie1Image;
     private static String movieRating = MoviePageController.movie1Rate;
+    private static String movieDesc = MoviePageController.movie2Desc;
 
     @FXML
     public void initialize() {
@@ -94,10 +83,16 @@ public class ScheduleControlM2 {
         } else {
             rating.setText("N/A");
         }
+
+        if (movieDesc != null && !movieDesc.isEmpty()) {
+            desc.setText(movieDesc);
+        } else {
+            desc.setText("Description not available.");
+        }
     }
 
     @FXML
-    void backClick(ActionEvent event) {
+    void backClick() {
         Stage currentStage = (Stage) back.getScene().getWindow();
         try {
             goback(new Stage());
@@ -266,7 +261,7 @@ public class ScheduleControlM2 {
         }
     }
 
-    public void setMovieDetails(String title, Image image, String rating, String date) {
+    public void setMovieDetails(String title, Image image, String rating) {
         // Update movieTitle and movieImage variables
         movieTitle = title;
         movieImage = image;
